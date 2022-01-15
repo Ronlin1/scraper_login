@@ -1,15 +1,23 @@
 import requests
 
-# Start the session
+# start a sssion
 session = requests.Session()
 
-# Create the payload
-payload = {'email':'<YOUR  EMAIL>',
-          'password':'<YOUR  PASSWORD>'
-         }
+# Create the  payload
+payload = {
+            "email":"your email",
+            "password":"your password"
+}
 
-# Post the payload to the site to log in
-s = session.post("https://www.walmart.com/account/login?vid=oaoh", data=payload)
+url = "https://www.walmart.com/account/login?vid=oaoh"
+# posting the payload  to login url
+try:
+    post = session.post(url, data=payload)
+    print("Loggon was successful")
+except:
+    print("Failed to login to Walmart!")
 
-# Navigate to the next page and scrape the data
-s = session.get('https://www.walmart.com/cp/playstation-5/3475115')
+
+get_data = session.get("https://www.walmart.com/cp/playstation-5/3475115")
+
+print(get_data)
